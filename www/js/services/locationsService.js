@@ -41,6 +41,12 @@ angular.module('starter').factory('LocationsService', [ function() {
 
   ];
 
-  return locationsObj;
-
+  return {
+      all: function() {
+          return locationsObj;
+      },
+      topThree: function() {
+          return locationsObj
+      }
+    }
 }]);

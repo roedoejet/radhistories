@@ -1,0 +1,16 @@
+<ion-view hide-nav-bar="true" view-title="Home">
+    <header class="bar bar-header bar-stable">
+      <h1 class="title">Welcome to Rad Tours</h1>
+        <a class="button button-icon icon ion-ios-information-outline" ng-click="openInfoModal()"></a>
+    </header>
+  <ion-content class="has-header padding front-page">  
+    <div class="container">
+    <p>
+    **Here's where we put some info about rad tours**    
+    </p>
+    <div ng-repeat="tour in popularTours|limitTo:3">
+        <a>{{tour.name}}</a>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

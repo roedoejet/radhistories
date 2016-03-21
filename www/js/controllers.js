@@ -1,4 +1,9 @@
-angular.module('starter').controller('MapController',
+angular.module('starter')
+    .controller('HomeCtrl', function($scope) {})
+
+    .controller('ToursCtrl', function($scope) {})
+
+    .controller('MapCtrl',
   [ '$scope',
     '$cordovaGeolocation',
     '$stateParams',
@@ -16,25 +21,49 @@ angular.module('starter').controller('MapController',
       InstructionsService
       ) {
 
+      // List of Tours
+    $scope.popularTours = LocationsService.topThree().savedLocations
+    $scope.tours = LocationsService.all().savedLocations
+          
+    
+      // Info Modal
+    
+    $ionicModal.fromTemplateUrl('../templates/infoModal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.infoModal = modal;
+  });      
+  $scope.closeInfoModal = function() {
+    $scope.infoModal.hide();
+  };
+  $scope.openInfoModal = function() {
+    $scope.infoModal.show();
+  };
+  
+
+      
+          
+          
       /**
        * Once state loaded, get put map on scope.
        */
       $scope.$on("$stateChangeSuccess", function() {
 
-        $scope.locations = LocationsService.savedLocations;
+        $scope.locations = LocationsService.all().savedLocations;
         $scope.newLocation;
 
-        if(!InstructionsService.instructions.newLocations.seen) {
-
-          var instructionsPopup = $ionicPopup.alert({
-            title: 'Add Locations',
-            template: InstructionsService.instructions.newLocations.text
-          });
-          instructionsPopup.then(function(res) {
-            InstructionsService.instructions.newLocations.seen = true;
-            });
-
-        }
+//        if(!InstructionsService.instructions.newLocations.seen) {
+//
+//          var instructionsPopup = $ionicPopup.alert({
+//            title: 'Add Locations',
+//            template: InstructionsService.instructions.newLocations.text
+//          });
+//          instructionsPopup.then(function(res) {
+//            InstructionsService.instructions.newLocations.seen = true;
+//            });
+//
+//        }
 
         $scope.map = {
           defaults: {
@@ -80,9 +109,9 @@ angular.module('starter').controller('MapController',
       });
 
       $scope.saveLocation = function() {
-        LocationsService.savedLocations.push($scope.newLocation);
+        LocationsService.all().savedLocations.push($scope.newLocation);
         $scope.modal.hide();
-        $scope.goTo(LocationsService.savedLocations.length - 1);
+        $scope.goTo(LocationsService.all().savedLocations.length - 1);
       };
 
       /**
@@ -90,8 +119,10 @@ angular.module('starter').controller('MapController',
        * @param locationKey
        */
       $scope.goTo = function(locationKey) {
+          console.log(locationKey)
 
-        var location = LocationsService.savedLocations[locationKey];
+        var location = LocationsService.all().savedLocations[locationKey];
+          console.log(location)
 
         $scope.map.center  = {
           lat : location.lat,
@@ -138,3 +169,6 @@ angular.module('starter').controller('MapController',
       };
 
     }]);
+
+
+                                 

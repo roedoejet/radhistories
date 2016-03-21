@@ -21,23 +21,47 @@ angular.module('starter', ['ionic', 'leaflet-directive', 'ngCordova', 'igTruncat
 
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-
-      .state('app', {
-        url: "/app",
+    
+    // Abstract State for Tabs
+    
+      .state('tab', {
+        url: "/tab",
         abstract: true,
-        templateUrl: "templates/menu.html",
-        controller: 'MapController'
+        templateUrl: "templates/tabs.html"
       })
 
-      .state('app.map', {
+    // Individual Tabs
+    
+      .state('tab.home', {
+        url: "/home",
+        views: {
+          'tab-home' :{
+            templateUrl: "templates/home.html",
+            controller: "MapCtrl"
+          }
+        }
+      })
+    
+    .state('tab.tours', {
+        url: "/tours",
+        views: {
+          'tab-tours' :{
+            templateUrl: "templates/tours.html",
+            controller: "MapCtrl"
+          }
+        }
+      })
+    
+    .state('tab.map', {
         url: "/map",
         views: {
-          'menuContent' :{
-            templateUrl: "templates/map.html"
+          'tab-map' :{
+            templateUrl: "templates/map.html",
+            controller: "MapCtrl"
           }
         }
       })
 
-    $urlRouterProvider.otherwise('/app/map');
+    $urlRouterProvider.otherwise('/tab/home');
 
   });
