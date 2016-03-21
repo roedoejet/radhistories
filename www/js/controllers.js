@@ -28,7 +28,7 @@ angular.module('starter')
     
       // Info Modal
     
-    $ionicModal.fromTemplateUrl('../templates/infoModal.html', {
+    $ionicModal.fromTemplateUrl('templates/infoModal.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
