@@ -61,6 +61,16 @@ angular.module('starter', ['ionic', 'leaflet-directive', 'ngCordova', 'igTruncat
           }
         }
       })
+    
+    .state('tab.settings', {
+        url: "/settings",
+        views: {
+          'tab-settings' :{
+            templateUrl: "templates/settings.html",
+            controller: "MapCtrl"
+          }
+        }
+      })
 
     $urlRouterProvider.otherwise('/tab/home');
 

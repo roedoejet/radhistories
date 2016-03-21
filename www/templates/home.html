@@ -6,10 +6,11 @@
   <ion-content class="has-header padding front-page">  
     <div class="container">
     <p>
-    **Here's where we put some info about rad tours**    
+    Welcome to Rad Tours, check out some popular tours below.   
     </p>
-    <div ng-repeat="tour in popularTours|limitTo:3">
-        <a>{{tour.name}}</a>
+    
+    <div class="list">
+        <a class="item" href="#/tab/map" ng-click="goTo(key)" ng-repeat="(key, location) in popularTours|limitTo:3">{{location.name}}</a>
     </div>
     </div>
   </ion-content>

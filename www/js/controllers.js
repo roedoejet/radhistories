@@ -48,7 +48,8 @@ angular.module('starter')
       /**
        * Once state loaded, get put map on scope.
        */
-      $scope.$on("$stateChangeSuccess", function() {
+//      $scope.$on("$ready", function() {
+        angular.element(document).ready(function () {
 
         $scope.locations = LocationsService.all().savedLocations;
         $scope.newLocation;
@@ -119,17 +120,16 @@ angular.module('starter')
        * @param locationKey
        */
       $scope.goTo = function(locationKey) {
-          console.log(locationKey)
-
         var location = LocationsService.all().savedLocations[locationKey];
+          
           console.log(location)
-
+          
         $scope.map.center  = {
           lat : location.lat,
           lng : location.lng,
           zoom : 12
         };
-
+          
         $scope.map.markers[locationKey] = {
           lat:location.lat,
           lng:location.lng,
@@ -137,7 +137,6 @@ angular.module('starter')
           focus: true,
           draggable: false
         };
-
       };
 
       /**
