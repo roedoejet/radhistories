@@ -5,6 +5,7 @@ angular.module('starter')
 
     .controller('MapCtrl',
   [ '$scope',
+    '$rootScope',
     '$cordovaGeolocation',
     '$stateParams',
     '$ionicModal',
@@ -13,6 +14,7 @@ angular.module('starter')
     'InstructionsService',
     function(
       $scope,
+      $rootScope,
       $cordovaGeolocation,
       $stateParams,
       $ionicModal,
@@ -66,7 +68,12 @@ angular.module('starter')
 //
 //        }
 
-        $scope.map = {
+        $rootScope.map = {
+          center: {
+              lat: 49.2827,
+              lng: -123.1207,
+              zoom: 12
+          },
           defaults: {
             tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             maxZoom: 18,
@@ -81,7 +88,7 @@ angular.module('starter')
           }
         };
 
-        $scope.goTo(0);
+//        $scope.goTo(0);
 
       });
 
@@ -124,13 +131,13 @@ angular.module('starter')
           
           console.log(location)
           
-        $scope.map.center  = {
+        $rootScope.map.center  = {
             lat : location.custom_fields.coordinates.lat,
             lng : location.custom_fields.coordinates.lng,
           zoom : 12
         };
           
-        $scope.map.markers[locationKey] = {
+        $rootScope.map.markers[locationKey] = {
             lat:location.custom_fields.coordinates.lat,
             lng:location.custom_fields.coordinates.lng,
           message: location.title,
