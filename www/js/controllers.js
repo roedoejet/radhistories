@@ -22,8 +22,8 @@ angular.module('starter')
       ) {
 
       // List of Tours
-    $scope.popularTours = LocationsService.topThree().savedLocations
-    $scope.tours = LocationsService.all().savedLocations
+    $scope.popularTours = LocationsService.topThree().posts
+    $scope.tours = LocationsService.all().posts
           
     
       // Info Modal
@@ -51,7 +51,7 @@ angular.module('starter')
 //      $scope.$on("$ready", function() {
         angular.element(document).ready(function () {
 
-        $scope.locations = LocationsService.all().savedLocations;
+        $scope.locations = LocationsService.all().posts;
         $scope.newLocation;
 
 //        if(!InstructionsService.instructions.newLocations.seen) {
@@ -110,9 +110,9 @@ angular.module('starter')
       });
 
       $scope.saveLocation = function() {
-        LocationsService.all().savedLocations.push($scope.newLocation);
+        LocationsService.all().posts.push($scope.newLocation);
         $scope.modal.hide();
-        $scope.goTo(LocationsService.all().savedLocations.length - 1);
+        $scope.goTo(LocationsService.all().posts.length - 1);
       };
 
       /**
@@ -120,20 +120,20 @@ angular.module('starter')
        * @param locationKey
        */
       $scope.goTo = function(locationKey) {
-        var location = LocationsService.all().savedLocations[locationKey];
+          var location = LocationsService.all().posts[locationKey];
           
           console.log(location)
           
         $scope.map.center  = {
-          lat : location.lat,
-          lng : location.lng,
+            lat : location.custom_fields.coordinates.lat,
+            lng : location.custom_fields.coordinates.lng,
           zoom : 12
         };
           
         $scope.map.markers[locationKey] = {
-          lat:location.lat,
-          lng:location.lng,
-          message: location.name,
+            lat:location.custom_fields.coordinates.lat,
+            lng:location.custom_fields.coordinates.lng,
+          message: location.title,
           focus: true,
           draggable: false
         };
