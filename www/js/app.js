@@ -37,7 +37,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'leaflet-directive', 'n
         views: {
           'tab-home' :{
             templateUrl: "templates/home.html",
-            controller: "MapCtrl"
+            controller: "HomeCtrl"
           }
         }
       })
@@ -47,7 +47,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'leaflet-directive', 'n
         views: {
           'tab-tours' :{
             templateUrl: "templates/tours.html",
-            controller: "MapCtrl"
+            controller: "ToursCtrl"
           }
         }
       })
@@ -67,7 +67,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'leaflet-directive', 'n
         views: {
           'tab-settings' :{
             templateUrl: "templates/settings.html",
-            controller: "MapCtrl"
+            controller: "SettingsCtrl"
           }
         }
       })

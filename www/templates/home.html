@@ -1,17 +1,18 @@
 <ion-view hide-nav-bar="true" view-title="Home">
-    <header class="bar bar-header bar-stable">
-      <h1 class="title">Welcome to Rad Tours</h1>
-        <a class="button button-icon icon ion-ios-help-outline" ng-click="openInfoModal()"></a>
-    </header>
-  <ion-content class="has-header padding front-page">  
-    <div class="container">
-    <p>
-    Welcome to Rad Tours, check out some popular tours below.   
-    </p>
-    
-    <div class="list">
-        <a class="item" href="#/tab/map" ng-click="goTo(key)" ng-repeat="(key, location) in popularTours|limitTo:3">{{location.title}}</a>
-    </div>
-    </div>
+<header class="bar bar-header bar-stable">
+    <h1 class="title">RAD Histories</h1>
+    <button ng-click="locate();" class="button button-icon icon ion-pinpoint"></button>
+</header>
+
+<!--
+  <ion-nav-buttons side="right">
+    <button ng-click="locate();" class="button button-icon icon ion-pinpoint"></button>
+  </ion-nav-buttons>
+-->
+
+  <ion-content class="has-header" data-tap-disabled="true">
+
+    <leaflet defaults="map.defaults" center="map.center" markers="map.markers" ng-if="map"></leaflet>
+
   </ion-content>
 </ion-view>
