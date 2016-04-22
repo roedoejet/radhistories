@@ -1,6 +1,6 @@
 angular.module('starter')
-    .controller('HomeCtrl', ['$scope','LocationsService','$cordovaGeolocation','$rootScope',
-     function($scope,LocationsService,$cordovaGeolocation,$rootScope) {
+    .controller('HomeCtrl', ['$scope','LocationsService','$cordovaGeolocation','$rootScope', '$ionicModal',
+     function($scope,LocationsService,$cordovaGeolocation,$rootScope,$ionicModal) {
          
         // $scope.allMarkers
         // $scope.markers
@@ -37,27 +37,44 @@ angular.module('starter')
                 $scope.allMarkers = [];
                 thesePoints.forEach(function(element,index,array) {
                   var theseCoordinatesArray = element.custom_fields.coordinates[0].split(',');
-                  var thisContent = element.excerpt;
+                  var thisExcerpt = element.excerpt;
                   var thisTitle = element.title;
+                  var thisContent = element.content;
+                  var html = "<h5>"+thisTitle+"</h5>"+
+                        "<p>"+thisExcerpt+"</p>"+
+                        "<button ng-click='openContentModal()'>Read more</button>";
                   $scope.allMarkers.push({
                       lat: parseFloat(theseCoordinatesArray[0]),
                       lng: parseFloat(theseCoordinatesArray[1]),
-                      message: "<h5>"+thisTitle+"</h5>"+
-                               "<p>"+thisContent+"</p>"+
-                               "<p><a>Read more</a></p>",
+                      message: html,
                       post_id : element.id,
                       title: thisTitle,
-                      excerpt: thisContent,
+                      excerpt: thisExcerpt,
                       link : element.url,
                       images : element.attachments,
-                      authors : element.custom_fields.point_creator
+                      authors : element.custom_fields.point_creator,
+                      getMessageScope: function() { return $scope; }
                   });
                 $scope.map.markers = $scope.allMarkers;
                 });
             });
         });
-         
-         
+        
+         // Content Modal
+
+         $ionicModal.fromTemplateUrl('templates/contentModal.html', {
+             scope: $scope,
+             animation: 'slide-in-up'
+         }).then(function(modal) {
+             $scope.contentModal = modal;
+         });
+         $scope.closeContentModal = function() {
+             $scope.contentModal.hide();
+         };
+         $scope.openContentModal = function() {
+             $scope.contentModal.show();
+         };
+
         // Map geolocation centering
         $scope.locate = function() {
             $cordovaGeolocation
