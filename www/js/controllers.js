@@ -57,6 +57,7 @@ angular.module('starter')
             });
         });
          
+         
         // Map geolocation centering
         $scope.locate = function() {
             $cordovaGeolocation
@@ -124,6 +125,14 @@ angular.module('starter')
         $rootScope.currentTour = allTours[key];
     }
 
+}])
+
+// Controller shell just so template loads
+.controller('SettingsCtrl', [
+    '$scope',
+    '$rootScope',
+function($scope,$rootScope) {
+    
 }])
 
 .controller('MapCtrl', ['$scope',
