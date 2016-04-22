@@ -40,15 +40,17 @@ angular.module('starter')
                   var thisExcerpt = element.excerpt;
                   var thisTitle = element.title;
                   var thisContent = element.content;
+                  var thisIndex = index;
                   var html = "<h5>"+thisTitle+"</h5>"+
                         "<p>"+thisExcerpt+"</p>"+
-                        "<button ng-click='openContentModal()'>Read more</button>";
+                        "<button ng-click='openContentModal(allMarkers[" + thisIndex + "])'>Read more</button>";
                   $scope.allMarkers.push({
                       lat: parseFloat(theseCoordinatesArray[0]),
                       lng: parseFloat(theseCoordinatesArray[1]),
                       message: html,
                       post_id : element.id,
                       title: thisTitle,
+                      content: thisContent,
                       excerpt: thisExcerpt,
                       link : element.url,
                       images : element.attachments,
@@ -71,7 +73,8 @@ angular.module('starter')
          $scope.closeContentModal = function() {
              $scope.contentModal.hide();
          };
-         $scope.openContentModal = function() {
+         $scope.openContentModal = function(element) {
+             $scope.thisMarker = element;
              $scope.contentModal.show();
          };
 
