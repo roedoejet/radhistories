@@ -158,6 +158,15 @@ function($scope,$rootScope) {
     $scope.startGeo = function(){
         backgroundGeoLocation.start()
     };
+    $scope.toggleGeo = function(geotrack){
+        if (geotrack == false || geotrack == undefined){
+            console.log("this stopped geotracking")
+            backgroundGeoLocation.stop()
+        } else if (geotrack == true) {
+            console.log("this started geotracking")
+            backgroundGeoLocation.start()
+        }
+    }
 }])
 
 .controller('MapCtrl', ['$scope',

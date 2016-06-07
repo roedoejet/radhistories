@@ -6,9 +6,9 @@
     <div class="container">
         <ul class="list">
             <li class="item item-toggle">
-                Turn on Geotracking
+                Allow Geotracking
                 <label class="toggle toggle-positive">
-                <input type="checkbox" ng-click="startGeo()">
+                    <input type="checkbox" ng-init="geotrack=true" ng-model="geotrack" ng-click="toggleGeo(geotrack)">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
@@ -17,7 +17,7 @@
             <li class="item item-toggle">
                 Turn off Geotracking
                 <label class="toggle toggle-positive">
-                <input type="checkbox" ng-click="stopGeo()">
+                <input type="checkbox">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
