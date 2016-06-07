@@ -152,6 +152,11 @@ angular.module('starter')
     '$scope',
     '$rootScope',
 function($scope,$rootScope) {
+    $scope.geo = {
+        distance: 50
+    }
+    $rootScope.geoDist = $scope.geo.distance
+
     $scope.stopGeo = function(){
         backgroundGeoLocation.stop()
     };
