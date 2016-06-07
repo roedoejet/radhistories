@@ -1,9 +1,27 @@
-angular.module('starter').factory('BackgroundGeolocationService', ['$q', '$http', function ($q, $http) {
+angular.module('starter').factory('BackgroundGeolocationService', ['$q', '$http', 'LocationsService', '$cordovaLocalNotification', function ($q, $http, LocationsService, $cordovaLocalNotification) {
     var callbackFn = function(location) {
         console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
 //        $http({
 //            //request options to send data to server
 //        });
+        
+    LocationsService.all().then(function(points){
+            var allPoints = points.data.posts
+            for(x in allPoints){
+             console.log(allPoints[x].custom_fields.coordinates)
+             notificationText = allPoints[x].custom_fields.coordinates[0]
+            }
+        })
+    
+    cordova.plugins.notification.local.schedule({
+        id: 1,
+        title: 'Warning',
+        text: 'You\'re sexy',
+        data: {
+            customProperty: 'custom value'
+        }
+    });
+
         backgroundGeoLocation.finish();
     },
 
