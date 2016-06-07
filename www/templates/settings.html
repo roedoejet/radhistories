@@ -2,22 +2,22 @@
    <header class="bar bar-header bar-stable">
       <h1 class="title">Settings</h1>
     </header>
-    <ion-content class="has-header">
+    <ion-content class="has-header" ng-controller="SettingsCtrl">
     <div class="container">
         <ul class="list">
             <li class="item item-toggle">
-                Allow Geotracking
+                Turn on Geotracking
                 <label class="toggle toggle-positive">
-                <input type="checkbox">
+                <input type="checkbox" ng-click="startGeo()">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
             <li class="item item-toggle">
-                Allow Push Notifications
+                Turn off Geotracking
                 <label class="toggle toggle-positive">
-                <input type="checkbox">
+                <input type="checkbox" ng-click="stopGeo()">
                     <div class="track">
                         <div class="handle"></div>
                     </div>

@@ -152,7 +152,12 @@ angular.module('starter')
     '$scope',
     '$rootScope',
 function($scope,$rootScope) {
-    
+    $scope.stopGeo = function(){
+        backgroundGeoLocation.stop()
+    };
+    $scope.startGeo = function(){
+        backgroundGeoLocation.start()
+    };
 }])
 
 .controller('MapCtrl', ['$scope',
