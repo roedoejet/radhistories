@@ -14,15 +14,11 @@
                     </div>
                 </label>
             </li>
-            <li class="item item-toggle">
-                Turn off Geotracking
-                <label class="toggle toggle-positive">
-                <input type="checkbox">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
+            <li class="item range range-positive" ng-show="geotrack">
+                Set Geotracking Range
+                    <input type="range" ng-model="geodistance" name="range" min="10" max="100" value="50">
             </li>
+<!--
             <li class="item item-toggle">
                 Whatever else
                 <label class="toggle toggle-positive">
@@ -32,6 +28,7 @@
                     </div>
                 </label>
             </li>
+-->
         </ul>
     </div>
 
