@@ -151,12 +151,24 @@ angular.module('starter')
 .controller('SettingsCtrl', [
     '$scope',
     '$rootScope',
-function($scope,$rootScope) {
+    '$cordovaLocalNotification',
+    'BackgroundGeolocationService',
+function($scope,$rootScope,$cordovaLocalNotification,BackgroundGeolocationService) {
+    $rootScope.geoDist = $scope.geo
+    angular.element(document).ready(function() {
+        console.log($scope.geo)
+        $scope.initialize($scope.geo)
+    });
+       
     $scope.geo = {
-        distance: 50
-    }
-    $rootScope.geoDist = $scope.geo.distance
+        distance: 100
+    };
 
+    $scope.initialize = function(geo){
+        console.log(geo)
+        BackgroundGeolocationService.init(geo);
+    }
+    
     $scope.stopGeo = function(){
         backgroundGeoLocation.stop()
     };
@@ -171,7 +183,7 @@ function($scope,$rootScope) {
             console.log("this started geotracking")
             backgroundGeoLocation.start()
         }
-    }
+    };
 }])
 
 .controller('MapCtrl', ['$scope',
