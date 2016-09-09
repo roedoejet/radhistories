@@ -51,10 +51,13 @@ angular.module('starter')
                             type: 'group',
                             visible: true
                         },
-//                        cluster:{
+//                        clusterGroup:{
 //                            name: 'Cluster',
 //                            type: 'markercluster',
-//                            visible: true
+//                            visible: true,
+//                            layerOptions: {
+//                                showCoverageOnHover: false
+//                            }
 //                        }
                     }
                 },
@@ -85,7 +88,7 @@ angular.module('starter')
                       lat: parseFloat(theseCoordinatesArray[0]),
                       lng: parseFloat(theseCoordinatesArray[1]),
                       message: html,
-//                      layer: 'cluster',
+//                      layer: 'clusterGroup',
                       layer: thisTitle == "Spartacus Books" ? "books" : 'other',
                       post_id : element.id,
                       title: thisTitle,
@@ -263,7 +266,7 @@ function($scope,$rootScope) {
                     zoom: 12
                 },
                 defaults: {
-                    tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                    tileLayer: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
                     maxZoom: 18,
                     zoomControlPosition: 'bottomleft'
                 },
