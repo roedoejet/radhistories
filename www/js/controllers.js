@@ -13,13 +13,50 @@ angular.module('starter')
                 center: {
                     lat: 49.2592095,
                     lng: -123.0908865,
-                    zoom: 12
+                    zoom: 12,
                 },
                 defaults: {
                     tileLayer: 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
                     maxZoom: 18,
                     zoomControlPosition: 'bottomleft',
                     attribution: ''
+                },
+                layers: {
+                    baselayers: {
+                        test1: {
+                            url: 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
+                            type: 'xyz',
+                            name: 'Test Base Layer 1',
+                            maxZoom: 18,
+                            zoomControlPosition: 'bottomleft',
+                            attribution: ''
+                        },
+                        test2: {
+                            url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
+                            type: 'xyz',
+                            name: 'Test Base Layer 2',
+                            maxZoom: 18,
+                            zoomControlPosition: 'bottomleft',
+                            attribution: ''
+                        }
+                    },
+                    overlays: {
+                        other: {
+                            name: 'Other',
+                            type: 'group',
+                            visible: true
+                        },
+                        books: {
+                            name: 'Books',
+                            type: 'group',
+                            visible: true
+                        },
+//                        cluster:{
+//                            name: 'Cluster',
+//                            type: 'markercluster',
+//                            visible: true
+//                        }
+                    }
                 },
                 markers: {},
                 events: {
@@ -48,6 +85,8 @@ angular.module('starter')
                       lat: parseFloat(theseCoordinatesArray[0]),
                       lng: parseFloat(theseCoordinatesArray[1]),
                       message: html,
+//                      layer: 'cluster',
+                      layer: thisTitle == "Spartacus Books" ? "books" : 'other',
                       post_id : element.id,
                       title: thisTitle,
                       content: thisContent,
