@@ -23,3 +23,9 @@ body {
     margin: 3%;
     padding: 2%;
 }
+#logo {
+    text-align: left;
+    margin: 0 0 0 5px;
+    height: 100%;
+    border-radius: 5px;
+}
