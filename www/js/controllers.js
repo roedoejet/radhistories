@@ -11,8 +11,8 @@ angular.module('starter')
             // Load initial map
             $scope.map = {
                 center: {
-                    lat: 49.2592095,
-                    lng: -123.0908865,
+                    lat: 43,
+                    lng: 123,
                     zoom: 12,
                 },
                 defaults: {
@@ -77,6 +77,13 @@ angular.module('starter')
                     }
                 }
             };
+
+            $cordovaGeolocation
+                .getCurrentPosition()
+                .then(function(position) {
+                $scope.map.center.lat = position.coords.latitude;
+                $scope.map.center.lng = position.coords.longitude;
+            });
             
             // Add current point markers, add to map
             $scope.map.markers = [];
