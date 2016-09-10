@@ -26,15 +26,23 @@ angular.module('starter')
                         test1: {
                             url: 'http://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
                             type: 'xyz',
-                            name: 'Test Base Layer 1',
+                            name: 'Streets',
                             maxZoom: 18,
                             zoomControlPosition: 'bottomleft',
                             attribution: ''
                         },
                         test2: {
-                            url: 'http://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
+                            url: 'http://api.tiles.mapbox.com/v4/mapbox.wheatpaste/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
                             type: 'xyz',
-                            name: 'Test Base Layer 2',
+                            name: 'Colour',
+                            maxZoom: 18,
+                            zoomControlPosition: 'bottomleft',
+                            attribution: ''
+                        },
+                        test3: {
+                            url: 'http://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
+                            type: 'xyz',
+                            name: 'Satellite',
                             maxZoom: 18,
                             zoomControlPosition: 'bottomleft',
                             attribution: ''

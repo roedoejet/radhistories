@@ -29,3 +29,6 @@ body {
     height: 100%;
     border-radius: 5px;
 }
+#locate {
+    margin: 0 auto;
+}
