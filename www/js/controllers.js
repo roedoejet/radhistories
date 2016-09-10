@@ -10,9 +10,9 @@ angular.module('starter')
             
             // Load initial map
             $scope.map = {
-                center: {
-                    lat: 43,
-                    lng: 123,
+                center: { 
+                    lat: 49.2592095,
+                    lng: -123.0908865,
                     zoom: 12,
                 },
                 defaults: {
